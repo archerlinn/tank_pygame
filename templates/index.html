@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Pixel Tank Battle</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #222;
+      font-family: 'Press Start 2P', cursive;
+      color: #fff;
+    }
+    canvas {
+      background: #006400;
+      display: block;
+      margin: 0 auto;
+      image-rendering: pixelated;
+    }
+    /* Main Menu & Game Over Screens */
+    #menu, #gameOver {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 20;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    /* Lobby styling */
+    #lobby {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(255,255,255,0.9);
+      color: #000;
+      padding: 10px;
+      border-radius: 4px;
+      z-index: 10;
+    }
+    /* Chat styling */
+    #chat {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      width: 300px;
+      z-index: 10;
+    }
+    #chatMessages {
+      height: 100px;
+      overflow-y: auto;
+      background: #eee;
+      color: #000;
+      padding: 5px;
+    }
+    #chat input {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  </style>
+  <!-- Retro pixel art font -->
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+</head>
+<body>
+  <div id="menu">
+    <h1>Pixel Tank Battle</h1>
+    <button id="pvpBtn">Player vs Player</button>
+    <button id="pveBtn">Player vs Computer</button>
+    <button id="quitBtn">Quit</button>
+  </div>
+  <div id="gameOver" style="display:none;">
+    <h1>Game Over!</h1>
+    <p id="winnerText"></p>
+    <button id="returnMenuBtn">Return to Menu</button>
+  </div>
+  <div id="lobby"></div>
+  <canvas id="gameCanvas" width="800" height="600"></canvas>
+  <div id="chat">
+    <div id="chatMessages"></div>
+    <input type="text" id="chatInput" placeholder="Type a message..." />
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.min.js"></script>
+  <script src="/static/game.js"></script>
+</body>
+</html>
