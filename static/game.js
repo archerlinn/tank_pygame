@@ -20,6 +20,10 @@ let shotCooldown = 500; // milliseconds
 let gameStarted = false;
 let mode = "pve";  // default mode
 
+// Images
+let firePurpleImage = new Image();
+firePurpleImage.src = '/static/fire_purple.png';
+
 // Main menu buttons
 document.getElementById("pvpBtn").addEventListener("click", () => {
   mode = "pvp";
@@ -220,10 +224,10 @@ function render() {
   // Draw bullets.
   if (gameState.bullets) {
     gameState.bullets.forEach(bullet => {
-      ctx.beginPath();
-      ctx.arc(bullet.x, bullet.y, 5, 0, Math.PI * 2);
-      ctx.fillStyle = bullet.skill ? "#FFA500" : "#ff0";
-      ctx.fill();
+      // Set the size of the bullet image (adjust as needed).
+      let bulletSize = 20;
+      // Draw the image centered at the bullet's position.
+      ctx.drawImage(firePurpleImage, bullet.x - bulletSize / 2, bullet.y - bulletSize / 2, bulletSize, bulletSize);
     });
   }
   // Draw explosions.
